@@ -5,8 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Meeple People</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="scripts.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Title</h1>
+  <script id="item-template" type="text/x-handlebars-template">
+    <div class="players">
+      {{#each this}}
+        <div class="player">
+          <h3>{{name}} {{#if boardgamegeekUsername}}aka {{boardgamegeekUsername}}{{/if}}</h3>
+          <ul>
+            {{#if city}}<li>🏠 {{city}}, {{country}}</li>{{/if}}
+            {{#if facebookUsername}}<li>💬 <a href="https://www.messenger.com/t/{{facebookUsername}}">Write message</a></li>{{/if}}
+            {{#if boardgamegeekUsername}}<li>🎲 <a href="https://boardgamegeek.com/user/{{boardgamegeekUsername}}">BGG profile</a></li>{{/if}}
+          </ul>
+        </div>
+      {{/each}}
+      </div>
+  </script>
+  <div class="wrap">
+    <h1>Boardgamers</h1>
+    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdU6rmqccFhH_13juYONvTW4hjiWlVUzam-iST8U-IHD9eMhg/viewform?usp=sf_link">Add your profile</a>
+    <div id="items">Loading Boardgamers...</div>
+  </div>
+  
 </body>
 </html>
