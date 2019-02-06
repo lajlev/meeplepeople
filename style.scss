@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+
+// Color palette https://flatuicolors.com/palette/nl
+
+$primary: #0652DD;
+
+* {
+  box-sizing: border-box;
+}
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Merriweather', serif;
+  color: #222;
+  background: #1B1464;
+  padding: 0;
+  margin: 0;
+}
+
+a, a:visited {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.btn {
+  color: white !important;
+  background: $primary;
+  border-radius: 3px;
+  padding: .75em 1.2em;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+header {
+  a.logo {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 18px;
+    padding: 2em 0 1em;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: relative; 
+
+    @media (max-width: 600px) {
+      text-align: left;
+      padding-left: 1em;
+    }
+
+
+  }
+  .menu {
+    position: absolute;
+    right: 1em;
+    top: 2.5em;
+    font-family: sans-serif;
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+
+section {
+  background: white;
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+  margin: 2em 0;
+  padding: 1em;
+
+  .human-date,
+  .thumbnail {
+    color: #aaa;
+    width: 100px;
+    display: inline-block;
+    font-size: 12px;
+  }
+  .thumbnail {
+    text-decoration: line-through;
+    &:hover {
+      // text-decoration: underline;
+      // cursor: pointer;
+    }
+  }
+
+  .numplays {
+    padding-right: .5em;
+    color: #aaa;
+  }
+}
+
+ul.list--info {
+  padding: 0;
+  li {
+    font-size: 14px;
+    padding: .4em 0;
+    margin: 0;
+    list-style-type: none;
+  }
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+
+

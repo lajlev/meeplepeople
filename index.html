@@ -7,29 +7,59 @@
   <title>Meeple People</title>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="scripts.js"></script>
+  <script src="/scripts/app.js"></script>
   <link rel="stylesheet" href="style.css">
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+	    $.getJSON('https://api.sheety.co/8e876208-a2e9-48b2-89d6-96fb05bb313e', function(data) {
+		    var template = Handlebars.compile($('#player-template').html());
+        $('#players').html(template(data));
+      })
+    })
+  </script>
+  
 </head>
 <body>
-  <script id="item-template" type="text/x-handlebars-template">
-    <div class="players">
-      {{#each this}}
-        <div class="player">
-          <h3>{{name}} {{#if boardgamegeekUsername}}aka {{boardgamegeekUsername}}{{/if}}</h3>
-          <ul>
-            {{#if city}}<li>🏠 {{city}}, {{country}}</li>{{/if}}
-            {{#if facebookUsername}}<li>💬 <a href="https://www.messenger.com/t/{{facebookUsername}}">Write message</a></li>{{/if}}
-            {{#if boardgamegeekUsername}}<li>🎲 <a href="https://boardgamegeek.com/user/{{boardgamegeekUsername}}">BGG profile</a></li>{{/if}}
-          </ul>
-        </div>
-      {{/each}}
-      </div>
-  </script>
-  <div class="wrap">
-    <h1>Boardgamers</h1>
-    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdU6rmqccFhH_13juYONvTW4hjiWlVUzam-iST8U-IHD9eMhg/viewform?usp=sf_link">Add your profile</a>
-    <div id="items">Loading Boardgamers...</div>
+  
+
+<script id="player-template" type="text/x-handlebars-template">
+  {{#each this}}
+    <section class="player">
+      <h3>
+        {{#if boardgamegeekUsername}}
+          {{boardgamegeekUsername}}
+        {{else}}   
+          {{name}} 
+        {{/if}}
+      </h3>
+      <ul class="list--info">
+        {{#if city}}
+          <li>🏠 {{city}}, {{country}}</li>
+        {{/if}}
+        {{#if facebookUsername}}
+          <li>💬 <a href="https://www.messenger.com/t/{{facebookUsername}}">Write message</a></li>
+        {{/if}}
+        {{#if boardgamegeekUsername}}
+          <li>🤓 <a href="https://boardgamegeek.com/user/{{boardgamegeekUsername}}">BGG profile</a></li>
+        {{/if}}
+      </ul>
+      {{#if boardgamegeekUsername}}
+        <a class="btn" href="/profile.html?username={{boardgamegeekUsername}}">View profile</a>
+      {{/if}}
+    </section>
+  {{/each}}
+</script>
+
+<header>
+  <a class="logo" href="/">Meeplepeople</a>
+  <div class="menu">
+      <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdU6rmqccFhH_13juYONvTW4hjiWlVUzam-iST8U-IHD9eMhg/viewform?usp=sf_link">Create profile</a>
   </div>
+</header>
+<div class="wrap">
+  <div id="players">Loading Boardgamers...</div>
+</div>
   
 </body>
 </html>

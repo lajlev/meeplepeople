@@ -1,15 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather:400,700");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Merriweather', serif;
+  color: #222;
+  background: #1B1464;
+  padding: 0;
+  margin: 0;
+}
+
+a, a:visited {
+  color: #0652DD;
+  text-decoration: none;
+}
+
+a:hover, a:visited:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  color: white !important;
+  background: #0652DD;
+  border-radius: 3px;
+  padding: .75em 1.2em;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+header a.logo {
+  color: white;
+  font-family: sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 18px;
+  padding: 2em 0 1em;
+  display: block;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  header a.logo {
+    text-align: left;
+    padding-left: 1em;
+  }
+}
+
+header .menu {
+  position: absolute;
+  right: 1em;
+  top: 2.5em;
+  font-family: sans-serif;
+}
+
+header .menu a {
+  color: white;
+  text-decoration: underline;
+}
+
+section {
+  background: white;
+  -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+  margin: 2em 0;
+  padding: 1em;
+}
+
+section .human-date,
+section .thumbnail {
+  color: #aaa;
+  width: 100px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+section .thumbnail {
+  text-decoration: line-through;
+}
+
+section .numplays {
+  padding-right: .5em;
+  color: #aaa;
+}
+
+ul.list--info {
+  padding: 0;
+}
+
+ul.list--info li {
+  font-size: 14px;
+  padding: .4em 0;
+  margin: 0;
+  list-style-type: none;
+}
 
 .wrap {
   max-width: 640px;
-  margin: 1em auto;
+  margin: 0 auto;
 }
-
-#items {
-  margin-top: 4em;
-}
-
-.player {
-  background: #f3f3f3;
-  padding: 1em;
-  margin: 1em 0;
-}
+/*# sourceMappingURL=style.css.map */

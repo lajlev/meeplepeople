@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Meeple People</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/scripts/moments.js"></script>
+  <script src="/scripts/app.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+	    $.getJSON('https://bggapi.glitch.me/user?username=' + $.urlParam('username'), function(data) {
+		    var template = Handlebars.compile($('#user-info-template').html());
+        $('#user-info').html(template(data.user));
+        // console.log(data.user);
+      })
+      $.getJSON('https://bggapi.glitch.me/plays?username=' + $.urlParam('username'), function(data) {
+		    var template = Handlebars.compile($('#user-plays-template').html());
+        $('#user-plays').html(template(data.plays));
+        //console.log(data.plays);
+      })
+      $.getJSON('https://bggapi.glitch.me/collection?username=' + $.urlParam('username'), function(data) {
+		    var template = Handlebars.compile($('#user-collection-template').html());
+        $('#user-collection').html(template(data));
+        //console.log(data);
+      })
+    })
+  </script>
+</head>
+<body>
+<script id="user-info-template" type="text/x-handlebars-template">
+  <section>
+    <h1>
+      {{name}}
+    </h1>
+    <ul class="list--info">
+      {{#if country.value}}
+        <li>🌍 Lives in {{country.value}}</li>
+      {{/if}}
+      {{#if webaddress.value}}
+        <li>💻 {{webaddress.value}}</li>
+      {{/if}}
+      <li>🤓 {{name}} created a <a href="https://boardgamegeek.com/user/{{name}}">BGG profile</a> {{humanTime yearregistered.value}}</li>
+
+    </ul>
+  </section>
+  <section>
+    <h3>
+        🤗 Buddies
+    </h3>
+    <ul class="list--info">
+      {{#each buddies.buddy}}
+        <li><a href="/profile.html?username={{name}}">{{name}}</a></li>
+      {{/each}}
+    </ul>
+  </section>
+</script>
+
+<script id="user-plays-template" type="text/x-handlebars-template">
+  <h3>
+      📆 Recent plays
+  </h3>
+  <ul class="list--info">
+    {{#each (limit play 20)}}
+      <li><span class="human-date" title="{{awesomeTime date}}">{{humanTime date}}</span> <a target="_blank" href="https://boardgamegeek.com/boardgame/{{item.objectid}}">{{nameFixed item.name}}</a></li>
+    {{/each}}
+  </ul>
+</script>
+
+<script id="user-collection-template" type="text/x-handlebars-template">
+  <h3>
+      🎲 Boardgame collection ({{totalitems}})
+  </h3>
+  <ul class="list--info">
+  {{#each item}}
+    <li>
+      <span class="thumbnail">View photo</span>
+      <a target="_blank" href="https://boardgamegeek.com/boardgame/{{objectid}}">{{nameFixed name.$t}} {{#if numplays}} <sup class="numplays">{{numplays}} plays</sup>{{/if}}</a> 
+    </li>
+  {{/each}}
+  </ul>
+</script>
+
+<header>
+  <a class="logo" href="/">Meeplepeople</a>
+  <div class="menu">
+      <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdU6rmqccFhH_13juYONvTW4hjiWlVUzam-iST8U-IHD9eMhg/viewform?usp=sf_link">Create profile</a>
+  </div>
+</header>
+<div class="wrap profile">
+  <div id="user-info">Loading user info...</div>
+  <section id="user-plays">Loading plays...</section>
+  <section id="user-collection">Loading collection...</section>
+</div>
+  
+</body>
+</html>
