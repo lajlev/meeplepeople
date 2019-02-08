@@ -41,8 +41,8 @@ Handlebars.registerHelper('limit', function (arr, limit) {
 
 // Replace 
 Handlebars.registerHelper('nameFixed', function(value) {
-  var value = value.replace(/&amp;/g, '&')
-  var value = value.replace(/&&#35;41;/g, ')')
-  var value = value.replace(/&&#35;40;/g, '(')
+  value = value.toString().replace(/&amp;/g, '&')
+  value = value.replace(/&&#35;41;/g, ')')
+  value = value.replace(/&&#35;40;/g, '(')
   return value;
 });
