@@ -13,8 +13,13 @@
   <script type="text/javascript">
     $(document).ready(function(){
 	    $.getJSON('https://api.sheety.co/8e876208-a2e9-48b2-89d6-96fb05bb313e', function(data) {
-		    var template = Handlebars.compile($('#player-template').html());
+        data = data.sort(function (a, b) {
+            return a.boardgamegeekUsername.localeCompare( b.boardgamegeekUsername );
+        });
+
+        var template = Handlebars.compile($('#player-template').html());
         $('#players').html(template(data));
+        //console.log(data);
       })
     })
   </script>

@@ -6,6 +6,20 @@ $.urlParam = function(name){
   return decodeURI(results[1]) || 0;
 };
 
+function sortByKeyDesc(array, key) {
+  return array.sort(function (a, b) {
+    var x = a[key]; var y = b[key];
+    return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+  });
+}
+
+function sortByKeyAsc(array, key) {
+  return array.sort(function (a, b) {
+    var x = a[key]; var y = b[key];
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+  });
+}
+
 
 // Convert to human time
 Handlebars.registerHelper('humanTime', function(value) {
@@ -27,8 +41,8 @@ Handlebars.registerHelper('limit', function (arr, limit) {
 
 // Replace 
 Handlebars.registerHelper('nameFixed', function(value) {
-  var nameFixed = value.replace(/&amp;/g, '&')
-  var nameFixed = nameFixed.replace(/&&#35;41;/g, ')')
-  var nameFixed = nameFixed.replace(/&&#35;40;/g, '(')
-  return nameFixed;
+  var value = value.replace(/&amp;/g, '&')
+  var value = value.replace(/&&#35;41;/g, ')')
+  var value = value.replace(/&&#35;40;/g, '(')
+  return value;
 });

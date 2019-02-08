@@ -7,6 +7,7 @@
   <title>Meeple People</title>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js"></script>
   <script src="/scripts/moments.js"></script>
   <script src="/scripts/app.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -79,7 +80,7 @@
   <ul class="list--info">
   {{#each item}}
     <li>
-      <span class="thumbnail">View photo</span>
+      <span class="thumbnail" data-featherlight="{{image}}">View photo</span>
       <a target="_blank" href="https://boardgamegeek.com/boardgame/{{objectid}}">{{nameFixed name.$t}} {{#if numplays}} <sup class="numplays">{{numplays}} plays</sup>{{/if}}</a> 
     </li>
   {{/each}}
