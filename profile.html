@@ -80,7 +80,7 @@
   <ul class="list--info">
   {{#each item}}
     <li>
-      <span class="thumbnail" data-featherlight="{{image}}">View photo</span>
+      <a class="thumbnail" data-featherlight="{{image}}">View photo</a>
       <a target="_blank" href="https://boardgamegeek.com/boardgame/{{objectid}}">{{nameFixed name.$t}} {{#if numplays}} <sup class="numplays">{{numplays}} plays</sup>{{/if}}</a> 
     </li>
   {{/each}}
