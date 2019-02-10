@@ -54,6 +54,7 @@
 
     </ul>
   </section>
+  {{#if buddies.buddy}}
   <section>
     <h3>
         🤗 Buddies
@@ -64,31 +65,40 @@
       {{/each}}
     </ul>
   </section>
+  {{/if}}
 </script>
 
 <script id="user-plays-template" type="text/x-handlebars-template">
-  <h3>
+  {{#if play}}
+  <section>
+    <h3>
       📆 Recent plays
-  </h3>
-  <ul class="list--info">
-    {{#each (limit play 20)}}
-      <li><a target="_blank" href="https://boardgamegeek.com/boardgame/{{item.objectid}}">{{nameFixed item.name}} <span class="meta" title="{{awesomeTime date}}">{{humanTime date}}</span></a></li>
-    {{/each}}
-  </ul>
+    </h3>
+    <ul class="list--info">
+      {{#each (limit play 20)}}
+        <li><a target="_blank" href="https://boardgamegeek.com/boardgame/{{item.objectid}}">{{nameFixed item.name}} <span class="meta" title="{{awesomeTime date}}">{{humanTime date}}</span></a></li>
+      {{/each}}
+    </ul>
+  </section>
+  {{/if}}
 </script>
 
 <script id="user-collection-template" type="text/x-handlebars-template">
-  <h3>
+  {{#if item}}
+  <section>
+    <h3>
       🎲 Boardgame collection ({{totalitems}})
-  </h3>
-  <ul class="list--info" data-featherlight-gallery data-featherlight-filter="a.item">
-  {{#each item}}
-    <li>
-      <a href="#" class="item" data-featherlight="#item--{{@index}}">{{nameFixed name.$t}} {{#if numplays}} <span class="meta">{{numplays}} plays</span>{{/if}}</a>
-      {{> item--details--collection }}
-    </li>
-  {{/each}}
-  </ul>
+    </h3>
+    <ul class="list--info" data-featherlight-gallery data-featherlight-filter="a.item">
+    {{#each item}}
+      <li>
+        <a href="#" class="item" data-featherlight="#item--{{@index}}">{{nameFixed name.$t}} {{#if numplays}} <span class="meta">{{numplays}} plays</span>{{/if}}</a>
+        {{> item--details--collection }}
+      </li>
+    {{/each}}
+    </ul>
+  </section>
+  {{/if}}
 </script>
 
 <header>
@@ -99,8 +109,8 @@
 </header>
 <div class="wrap profile">
   <div id="user-info">Loading user info...</div>
-  <section id="user-plays">Loading plays...</section>
-  <section id="user-collection">Loading collection...</section>
+  <div id="user-plays">Loading plays...</div>
+  <div id="user-collection">Loading collection...</div>
 </div>
 
 
