@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Meeple People</title>
-  
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js"></script>
   <script src="/scripts/moments.js"></script>
   <script src="/scripts/app.js"></script>
+
   <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.gallery.min.css" type="text/css" rel="stylesheet" />
+  
   <link rel="stylesheet" href="style.css">
 
   <script type="text/javascript">
@@ -79,10 +81,10 @@
   <h3>
       🎲 Boardgame collection ({{totalitems}})
   </h3>
-  <ul class="list--info">
+  <ul class="list--info" data-featherlight-gallery data-featherlight-filter="a.item">
   {{#each item}}
     <li>
-      <a href="#" data-featherlight="#item--{{@index}}">{{nameFixed name.$t}} {{#if numplays}} <sup class="numplays">{{numplays}} plays</sup>{{/if}}</a>
+      <a href="#" class="item" data-featherlight="#item--{{@index}}">{{nameFixed name.$t}} {{#if numplays}} <sup class="numplays">{{numplays}} plays</sup>{{/if}}</a>
       <div class="item--details" id="item--{{@index}}">
         <h1>{{nameFixed name.$t}}</h1>
         <img src="{{image}}">
@@ -105,6 +107,10 @@
   <section id="user-collection">Loading collection...</section>
   <div id="mylightbox">This div will be opened in a lightbox</div>
 </div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.7.13/featherlight.min.js"></script>
+<script type="text/javascript" src="//cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.gallery.min.js"></script>
   
 </body>
 </html>
