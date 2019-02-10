@@ -46,3 +46,13 @@ Handlebars.registerHelper('nameFixed', function(value) {
   value = value.replace(/&&#35;40;/g, '(')
   return value;
 });
+
+// partial views
+
+Handlebars.registerPartial('item--details--collection',
+  '<div class="item--details" id="item--{{@index}}">' +
+    '<h1>{{nameFixed name.$t}}</h1>' +
+    '<img src="{{image}}">' +
+    '<a class="btn" target="_blank" href="https://boardgamegeek.com/boardgame/{{objectid}}">Boardgamegeek</a>' +
+  '</div>'
+);

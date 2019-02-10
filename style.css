@@ -110,6 +110,8 @@ ul.list--info li {
   max-height: 70vh;
   width: auto;
   height: auto;
+  margin: 0 auto 2em;
+  display: block;
 }
 
 .featherlight-content .btn a:hover {
