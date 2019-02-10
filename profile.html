@@ -72,7 +72,7 @@
   </h3>
   <ul class="list--info">
     {{#each (limit play 20)}}
-      <li><span class="human-date" title="{{awesomeTime date}}">{{humanTime date}}</span> <a target="_blank" href="https://boardgamegeek.com/boardgame/{{item.objectid}}">{{nameFixed item.name}}</a></li>
+      <li><a target="_blank" href="https://boardgamegeek.com/boardgame/{{item.objectid}}">{{nameFixed item.name}} <span class="meta" title="{{awesomeTime date}}">{{humanTime date}}</span></a></li>
     {{/each}}
   </ul>
 </script>
@@ -84,7 +84,7 @@
   <ul class="list--info" data-featherlight-gallery data-featherlight-filter="a.item">
   {{#each item}}
     <li>
-      <a href="#" class="item" data-featherlight="#item--{{@index}}">{{nameFixed name.$t}} {{#if numplays}} <sup class="numplays">{{numplays}} plays</sup>{{/if}}</a>
+      <a href="#" class="item" data-featherlight="#item--{{@index}}">{{nameFixed name.$t}} {{#if numplays}} <span class="meta">{{numplays}} plays</span>{{/if}}</a>
       <div class="item--details" id="item--{{@index}}">
         <h1>{{nameFixed name.$t}}</h1>
         <img src="{{image}}">
@@ -105,7 +105,6 @@
   <div id="user-info">Loading user info...</div>
   <section id="user-plays">Loading plays...</section>
   <section id="user-collection">Loading collection...</section>
-  <div id="mylightbox">This div will be opened in a lightbox</div>
 </div>
 
 

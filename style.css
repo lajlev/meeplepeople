@@ -76,17 +76,13 @@ section {
   padding: 1em;
 }
 
-section .human-date {
+section a span.meta {
   color: #aaa;
-  width: 100px;
-  display: inline-block;
   font-size: 12px;
-}
-
-section .numplays {
-  padding-right: .5em;
-  color: #aaa;
-  font-size: 10px;
+  padding-left: 5px;
+  position: relative;
+  top: -1px;
+  font-family: sans-serif;
 }
 
 section .item--details {
